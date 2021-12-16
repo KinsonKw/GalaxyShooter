@@ -30,13 +30,15 @@ public class PathPlaneController : MonoBehaviour
     private bool _changingToBoost= false;
     private float _currChangeTime = 0f;
     private float _changeTime = 2f;
-    
+
+    [SerializeField] private Animator animator = null;
+    [SerializeField] private bool roll = false;
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Confined;
 
-        speed = 20f;
+        speed = 30f;
         boostTimer = 0f;
         boosting = false;
     }
@@ -51,7 +53,7 @@ public class PathPlaneController : MonoBehaviour
 
             if (_currPathPoint == 1f)
             {
-                SceneManager.LoadScene("Victory Screen");
+                SceneManager.LoadScene("VictoryScreen");
             }
 
             // Set position and rotation on the path at that point
@@ -97,12 +99,14 @@ public class PathPlaneController : MonoBehaviour
             boostTimer += Time.deltaTime;
             if(boostTimer >= 3f)
             {
-                _pathMoveSpeed = 20f;
+                _pathMoveSpeed = 30f;
                 boostTimer = 0f;
                 boosting = false;
                 _changingFOV = true;
                 _changingToBoost = false;
 
+                animator.SetBool("Roll", true);
+                roll = false;
             }
         }
     }

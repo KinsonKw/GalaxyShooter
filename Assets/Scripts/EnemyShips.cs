@@ -21,7 +21,7 @@ public class EnemyShips : MonoBehaviour
         if (collision.collider.CompareTag("Player"))
         {
             Destroy(collision.gameObject);
-            SceneManager.LoadScene("FinalProject");
+            SceneManager.LoadScene("GalaxyShooter");
         }
     }
 }

@@ -29,7 +29,7 @@ public class TitleControl : MonoBehaviour
     }
     public void OnClick_Play()
     {
-        SceneManager.LoadScene("Final Project, Plane Game");
+        SceneManager.LoadScene("GalaxyShooter");
     }
     public void OnClick_Options()
     {
@@ -44,5 +44,15 @@ public class TitleControl : MonoBehaviour
     public void OnValueChanged_Vol(float volume)
     {
         _vol = volume;
+    }
+
+    public void OnClick_PlayAgain()
+    {
+        SceneManager.LoadScene("GalaxyShooter");
+    }
+
+    public void OnClick_MainMenu()
+    {
+        SceneManager.LoadScene("MenuScreen");
     }
 }
