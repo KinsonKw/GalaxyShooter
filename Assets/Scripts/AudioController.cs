@@ -7,12 +7,17 @@ using UnityEngine.Audio;
 public class AudioController : MonoBehaviour
 {
     [SerializeField] private Slider slider = null;
+    [SerializeField] private Slider musicSlider = null;
+    [SerializeField] private Slider sfxSlider = null;
+
     [SerializeField] private AudioMixer mixer = null;
 
     // Start is called before the first frame update
     void Start()
     {
         slider.onValueChanged.AddListener(OnVolumeChange);
+        musicSlider.onValueChanged.AddListener(MusicChange);
+        sfxSlider.onValueChanged.AddListener(SFXChange);
     }
 
     // Update is called once per frame
@@ -30,15 +35,12 @@ public class AudioController : MonoBehaviour
         {
             mixer.SetFloat("Master", vol);
         }
-        if(vol == slider.minValue)
-        {
-            mixer.SetFloat("SFX", -80);
-        }
-        else
-        {
-            mixer.SetFloat("SFX", vol);
-        }
-        if(vol == slider.minValue)
+
+       
+    }
+    public void MusicChange(float vol)
+    {
+        if(vol == musicSlider.minValue)
         {
             mixer.SetFloat("Music", -80);
         }
@@ -47,5 +49,15 @@ public class AudioController : MonoBehaviour
             mixer.SetFloat("Music", vol);
         }
     }
-    
+    public void SFXChange(float vol)
+    {
+        if(vol == sfxSlider.minValue)
+        {
+            mixer.SetFloat("SFX", -80);
+        }
+        else
+        {
+            mixer.SetFloat("SFX", vol);
+        }
+    }
 }

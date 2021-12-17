@@ -32,7 +32,6 @@ public class PathPlaneController : MonoBehaviour
     private float _changeTime = 2f;
 
     [SerializeField] private Animator animator = null;
-    [SerializeField] private bool roll = false;
 
     void Start()
     {
@@ -105,8 +104,7 @@ public class PathPlaneController : MonoBehaviour
                 _changingFOV = true;
                 _changingToBoost = false;
 
-                animator.SetBool("Roll", true);
-                roll = false;
+
             }
         }
     }
@@ -116,6 +114,7 @@ public class PathPlaneController : MonoBehaviour
         _pathMoveSpeed = speed;
         _changingFOV = true;
         _changingToBoost = true;
+        animator.SetTrigger("Roll");
     }
 
 }

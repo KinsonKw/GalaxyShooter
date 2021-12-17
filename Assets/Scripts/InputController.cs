@@ -5,11 +5,12 @@ using UnityEngine;
 public class InputController : MonoBehaviour
 {
     public LayerMask mask;
-   // private Mouse mouse = null;
+    public AudioSource shootingSound;
+    //private Mouse mouse = null;
     // Start is called before the first frame update
     void Start()
     {
-       // mouse = Mouse.current;
+       //mouse = Mouse.current;
     }
 
     // Update is called once per frame
@@ -22,7 +23,8 @@ public class InputController : MonoBehaviour
 
             if(Physics.Raycast(ray, out hit, 50f, mask))
             {
-
+                shootingSound.Play();
+                Enemy enemy = hit.transform.GetComponent<Enemy>();
                 Destroy(hit.transform.gameObject);
             }
         }

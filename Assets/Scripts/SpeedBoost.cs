@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SpeedBoost : MonoBehaviour
 {
-    [SerializeField] private Animator animator = null;
-    [SerializeField] private bool roll = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,8 +22,6 @@ public class SpeedBoost : MonoBehaviour
             Debug.LogError("SpeedBoost");
             PathPlaneController plane = other.GetComponentInParent<PathPlaneController>();
             plane.SpeedBoost();
-            animator.SetBool("Roll", true);
-            roll = false;
             Destroy(gameObject);
 
         }
